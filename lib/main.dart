@@ -5,10 +5,8 @@ import './screens/home.dart';
 
 //a personal event manager, built for me(yeah i building it for me)
 //personally aimed at writing cleaner code
-//unfortunately apps like this have been already built, i acknowledge it
-//but this project is a simply for me to learn.
-//home.dart file 
-
+//unfortunately apps like this have been already built, i acknowledge it, 
+//yet i simply want to make my own, prefarebly use some ai tools
 
 //{background color,foreground color} -{cf9641,2f3d33}
 
@@ -21,7 +19,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
     );

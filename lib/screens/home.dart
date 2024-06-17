@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../widgets/appbar.dart';
+
+const text = ["Today's expenses", "yesterday's expenses"];
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,46 +13,34 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(  //main column //could introduce a sliverappbar, to make janky scrolling effects
-        //could look real nice though
-          children: [
-            Container(
-              width: double.infinity,
-              height: 230,
-              decoration: const BoxDecoration(
-                color: Color(0xffcf9641),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 35),
-                    Text(
-                      "Life Sync",
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const CustomAppBar(),
+          const SizedBox(height: 20),
+          Expanded(
+            child: PageView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: text.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    width: double.infinity,
+                    child: Text(
+                      text[index],
                       style: GoogleFonts.jetBrainsMono(
-                          fontSize: 54,
-                          fontWeight: FontWeight.bold,
-                          color: const Color(0xff2f3d33)),
+                        fontSize: 35,
+                        fontWeight: FontWeight.w900,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    Text(
-                      "Helps to keep your life in sync :-)",
-                      style: GoogleFonts.jetBrainsMono(
-                          fontSize: 18
-                          ,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xffFFFFFF)),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+                  );
+                }),
+          )
+        ],
       ),
     );
   }
