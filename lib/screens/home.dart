@@ -19,10 +19,13 @@ class Home extends StatelessWidget {
               style: GoogleFonts.jetBrainsMono(
                 fontSize: 35,
                 fontWeight: FontWeight.w800,
-                color: const Color(0xff141216),
+                color: const Color(0xfffefefe),
               ),
             ),
-            leading: const Icon(Icons.menu),
+            leading: const Icon(
+              Icons.menu,
+              color: Color(0xfffefefe),
+            ),
             expandedHeight: 300,
             floating: false,
             pinned: true,

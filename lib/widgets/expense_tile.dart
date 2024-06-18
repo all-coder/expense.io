@@ -10,6 +10,7 @@ class ExpenseTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double leftAlignment = 65;
     return Container(
       padding: const EdgeInsets.all(6),
       width: MediaQuery.of(context).size.width,
@@ -29,7 +30,7 @@ class ExpenseTile extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 90,
+            left: leftAlignment,
             top: 2,
             child: Text(
               expenseObj.name,
@@ -41,7 +42,7 @@ class ExpenseTile extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 90,
+            left: leftAlignment,
             top: 35,
             child: Text(
               "Payed ${expenseObj.reciever} \$${expenseObj.amount}",
