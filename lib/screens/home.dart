@@ -24,6 +24,7 @@ class Home extends StatelessWidget {
                 leading: const Icon(
                   Icons.menu,
                   color: Color(0xffee6c4d),
+                  size: 30,
                 ),
                 expandedHeight: 300,
                 floating: false,
