@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:proj_13/widgets/expense.dart';
 
 const text = ["Yesterday", "Today"];
 
@@ -12,25 +13,22 @@ class Home extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            backgroundColor: Colors.purple,
+            backgroundColor: const Color(0xff964847),
             title: Text(
               "LifeSync",
-              style: GoogleFonts.jetBrainsMono(fontSize: 35,fontWeight: FontWeight.w800),
+              style: GoogleFonts.jetBrainsMono(
+                fontSize: 35,
+                fontWeight: FontWeight.w800,
+                color: const Color(0xff141216),
+              ),
             ),
             leading: const Icon(Icons.menu),
             expandedHeight: 300,
-            floating: false, 
-            pinned: true, 
+            floating: false,
+            pinned: true,
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return ListTile(
-                  title: Text(text[index % text.length]),
-                );
-              },
-              childCount: 20,
-            ),
+          const SliverToBoxAdapter(
+            child: Expense(),
           ),
         ],
       ),

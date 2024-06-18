@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Expense extends StatefulWidget {
+  const Expense({super.key});
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _ExpenseState();
   }
 }
@@ -15,7 +15,8 @@ class _ExpenseState extends State<Expense> {
   final pageController = PageController(initialPage: 1);
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
+      height: MediaQuery.of(context).size.height,
       child: PageView.builder(
         controller: pageController,
         scrollDirection: Axis.horizontal,
