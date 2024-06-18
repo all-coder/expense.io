@@ -11,39 +11,40 @@ class Expense extends StatefulWidget {
     return _ExpenseState();
   }
 }
-final text = ["Yesterday","Today"];
-final Map<String,List<ExpenseModel>> obj = {"Yesterday":yesterdayDummyList,"Today":todayDummyList};
+
+final text = ["Yesterday", "Today"];
+final Map<String, List<ExpenseModel>> obj = {
+  "Yesterday": yesterdayDummyList,
+  "Today": todayDummyList
+};
 
 class _ExpenseState extends State<Expense> {
   final pageController = PageController(initialPage: 1);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: PageView.builder(
-        controller: pageController,
-        scrollDirection: Axis.horizontal,
-        itemCount: obj.length,
-        itemBuilder: (context, index) {
-          return SingleChildScrollView(
-            child:Column(
-              children: [
-                Text(
-                 text[index],
-                  style: GoogleFonts.jetBrainsMono(
-                    fontSize: 35,
-                    fontWeight: FontWeight.w900,
-                  ),
-                  textAlign: TextAlign.center,
+    return PageView.builder(
+      controller: pageController,
+      scrollDirection: Axis.horizontal,
+      itemCount: obj.length,
+      itemBuilder: (context, index) {
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Text(
+                text[index],
+                style: GoogleFonts.jetBrainsMono(
+                  fontSize: 35,
+                  fontWeight: FontWeight.w900,
                 ),
-                ...obj[text[index]]!.map((item){
-                  return ExpenseTile(expenseObj: item);
-                })
-              ],
-            ),
-          );
-        },
-      ),
+                textAlign: TextAlign.center,
+              ),
+              ...obj[text[index]]!.map((item) {
+                return ExpenseTile(expenseObj: item);
+              })
+            ],
+          ),
+        );
+      },
     );
   }
 }
