@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../models/dummydata.dart';
+import '../widgets/expense_tile.dart';
 
 class Expense extends StatefulWidget {
   const Expense({super.key});
@@ -24,13 +26,18 @@ class _ExpenseState extends State<Expense> {
         itemBuilder: (context, index) {
           return SizedBox(
             width: double.infinity,
-            child: Text(
-              text[index],
-              style: GoogleFonts.jetBrainsMono(
-                fontSize: 35,
-                fontWeight: FontWeight.w900,
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              children: [
+                Text(
+                  text[index],
+                  style: GoogleFonts.jetBrainsMono(
+                    fontSize: 35,
+                    fontWeight: FontWeight.w900,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ExpenseTile(expenseObj:todayDummyList[0]),
+              ],
             ),
           );
         },
