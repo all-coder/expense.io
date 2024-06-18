@@ -37,6 +37,42 @@ final todayDummyList = [
       amount: "1800",
       date: DateTime.now(),
       reciever: "Online Store"),
+       ExpenseModel(
+      name: "Transport", amount: "500", date: DateTime.now(), reciever: "Uber"),
+  ExpenseModel(
+      name: "Entertainment",
+      amount: "1200",
+      date: DateTime.now(),
+      reciever: "Netflix"),
+  ExpenseModel(
+      name: "Utility",
+      amount: "800",
+      date: DateTime.now(),
+      reciever: "Electric Company"),
+  ExpenseModel(
+      name: "Shopping", amount: "2500", date: DateTime.now(), reciever: "Mall"),
+  ExpenseModel(
+      name: "Travel",
+      amount: "4500",
+      date: DateTime.now(),
+      reciever: "Airline"),
+  ExpenseModel(
+      name: "Transport", amount: "300", date: DateTime.now(), reciever: "Bus"),
+  ExpenseModel(
+      name: "Entertainment",
+      amount: "1500",
+      date: DateTime.now(),
+      reciever: "Disney+"),
+  ExpenseModel(
+      name: "Utility",
+      amount: "600",
+      date: DateTime.now(),
+      reciever: "Water Company"),
+  ExpenseModel(
+      name: "Shopping",
+      amount: "1800",
+      date: DateTime.now(),
+      reciever: "Online Store"),
 ];
 
 final yesterdayDummyList = [
@@ -82,4 +118,40 @@ final yesterdayDummyList = [
       amount: "800",
       date: DateTime.now(),
       reciever: "Veterinary Clinic"),
+       ExpenseModel(
+      name: "Transport", amount: "500", date: DateTime.now(), reciever: "Uber"),
+  ExpenseModel(
+      name: "Entertainment",
+      amount: "1200",
+      date: DateTime.now(),
+      reciever: "Netflix"),
+  ExpenseModel(
+      name: "Utility",
+      amount: "800",
+      date: DateTime.now(),
+      reciever: "Electric Company"),
+  ExpenseModel(
+      name: "Shopping", amount: "2500", date: DateTime.now(), reciever: "Mall"),
+  ExpenseModel(
+      name: "Travel",
+      amount: "4500",
+      date: DateTime.now(),
+      reciever: "Airline"),
+  ExpenseModel(
+      name: "Transport", amount: "300", date: DateTime.now(), reciever: "Bus"),
+  ExpenseModel(
+      name: "Entertainment",
+      amount: "1500",
+      date: DateTime.now(),
+      reciever: "Disney+"),
+  ExpenseModel(
+      name: "Utility",
+      amount: "600",
+      date: DateTime.now(),
+      reciever: "Water Company"),
+  ExpenseModel(
+      name: "Shopping",
+      amount: "1800",
+      date: DateTime.now(),
+      reciever: "Online Store"),
 ];

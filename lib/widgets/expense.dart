@@ -25,9 +25,8 @@ class _ExpenseState extends State<Expense> {
         scrollDirection: Axis.horizontal,
         itemCount: obj.length,
         itemBuilder: (context, index) {
-          return SizedBox(
-            width: double.infinity,
-            child: Column(
+          return SingleChildScrollView(
+            child:Column(
               children: [
                 Text(
                  text[index],
