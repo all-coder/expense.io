@@ -13,6 +13,7 @@ class Expense extends StatefulWidget {
 }
 
 final text = ["Yesterday", "Today"];
+
 final Map<String, List<ExpenseModel>> obj = {
   "Yesterday": yesterdayDummyList,
   "Today": todayDummyList
@@ -27,26 +28,52 @@ class _ExpenseState extends State<Expense> {
       scrollDirection: Axis.horizontal,
       itemCount: obj.length,
       itemBuilder: (context, index) {
+        var length = obj[text[index]]!.length;
         return SingleChildScrollView(
-          child: Column(
-            children: [
-              //for giving space between the sliver space bar and content following it.
-              const SizedBox(
-                height: 15,
+          child: length != 0
+              ? Column(
+                  children: [
+                    //for giving space between the sliver space bar and content following it.
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      text[index],
+                      style: GoogleFonts.jetBrainsMono(
+                        fontSize: 35,
+                        fontWeight: FontWeight.w900,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+
+                    ...obj[text[index]]!.map(
+                      (item) {
+                        return ExpenseTile(expenseObj: item);
+                      },
+                    ),
+                  ],
+                )
+              : Column(
+                children: [
+                  const SizedBox(height: 20,),
+                  Text(
+                      text[index],
+                      style: GoogleFonts.jetBrainsMono(
+                        fontSize: 35,
+                        fontWeight: FontWeight.w900,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  Container(
+                      height: 300,
+                      width: 300,
+                      margin: const EdgeInsets.only(top: 50),
+                      child: Image.asset(
+                        "lib/assets/images/nothing_here.png",
+                      ),
+                    ),
+                ],
               ),
-              Text(
-                text[index],
-                style: GoogleFonts.jetBrainsMono(
-                  fontSize: 35,
-                  fontWeight: FontWeight.w900,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              ...obj[text[index]]!.map((item) {
-                return ExpenseTile(expenseObj: item);
-              })
-            ],
-          ),
         );
       },
     );
