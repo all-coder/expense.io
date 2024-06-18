@@ -20,11 +20,11 @@ class ExpenseTile extends StatelessWidget {
         children: [
           Positioned(
             left: 6,
-            top: 5,
-            child: Container(
-              width: 50,
-              height: 50,
-              color: Colors.red,
+            top: 15,
+            child: Icon(
+              tagIcons[expenseObj.tag],
+              size:30,
+              color: Colors.white,
             ),
           ),
           Positioned(
