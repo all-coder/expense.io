@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:proj_13/widgets/expense.dart'; 
+import 'package:proj_13/widgets/expense.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -28,6 +28,18 @@ class Home extends StatelessWidget {
                 expandedHeight: 300,
                 floating: false,
                 pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                    background: Stack(
+                  children: [
+                    Positioned(
+                      top:90,
+                      left:175,
+                      child: Image.asset(
+                        "lib/assets/images/peep.png",
+                      ),
+                    )
+                  ],
+                )),
               ),
             ];
           },
