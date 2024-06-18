@@ -14,7 +14,7 @@ class Home extends StatelessWidget {
               SliverAppBar(
                 backgroundColor: const Color(0xff293241),
                 title: Text(
-                  "LifeSync",
+                  "LifeSYNC",
                   style: GoogleFonts.jetBrainsMono(
                     fontSize: 35,
                     fontWeight: FontWeight.w800,
@@ -32,8 +32,32 @@ class Home extends StatelessWidget {
                     background: Stack(
                   children: [
                     Positioned(
-                      top:90,
-                      left:175,
+                      top: 110,
+                      left: 30,
+                      child: Text(
+                        "Remaining\nBudget",
+                        style: GoogleFonts.jetBrainsMono(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 190,
+                      left: 30,
+                      child: Text(
+                        "\$500",
+                        style: GoogleFonts.jetBrainsMono(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 80,
+                      left: 175,
                       child: Image.asset(
                         "lib/assets/images/peep.png",
                       ),
