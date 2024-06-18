@@ -30,6 +30,10 @@ class _ExpenseState extends State<Expense> {
         return SingleChildScrollView(
           child: Column(
             children: [
+              //for giving space between the sliver space bar and content following it.
+              const SizedBox(
+                height: 15,
+              ),
               Text(
                 text[index],
                 style: GoogleFonts.jetBrainsMono(

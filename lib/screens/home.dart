@@ -12,18 +12,18 @@ class Home extends StatelessWidget {
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
               SliverAppBar(
-                backgroundColor: const Color(0xff964847),
+                backgroundColor: const Color(0xff293241),
                 title: Text(
                   "LifeSync",
                   style: GoogleFonts.jetBrainsMono(
                     fontSize: 35,
                     fontWeight: FontWeight.w800,
-                    color: const Color(0xfffefefe),
+                    color: const Color(0xffee6c4d),
                   ),
                 ),
                 leading: const Icon(
                   Icons.menu,
-                  color: Color(0xfffefefe),
+                  color: Color(0xffee6c4d),
                 ),
                 expandedHeight: 300,
                 floating: false,
