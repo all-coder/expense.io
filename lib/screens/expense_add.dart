@@ -11,7 +11,25 @@ class ExpenseAdd extends StatefulWidget {
 }
 
 class _ExpenseAddState extends State<ExpenseAdd> {
+  Future<void> _getDate() async {
+    DateTime ? _pickedDate = await showDatePicker( //tells flutter the DateTime can either hold datetime or null value, that is
+    //why we used '?' operator.
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2040),
+    );
+    if(_pickedDate!=null){
+      setState(() {
+        dateController.text = _pickedDate.toString().split(" ")[0];
+      });
+    }
+  }
+
   final _formKey = GlobalKey<FormState>();
+  final descriptionController = TextEditingController();
+  final amountController = TextEditingController();
+  final dateController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,20 +60,74 @@ class _ExpenseAddState extends State<ExpenseAdd> {
           child: Column(
             children: [
               Container(
-                margin: const EdgeInsets.only(top:10),
-                padding: const EdgeInsets.only(top:5),
+                margin: const EdgeInsets.only(top: 10),
                 decoration: const BoxDecoration(
                   color: Colors.red,
                 ),
                 child: TextFormField(
-                  
+                  style: GoogleFonts.jetBrainsMono(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
                   decoration: const InputDecoration(
-                    
-                    prefixIcon:Icon(EvaIcons.text_outline),
-                      contentPadding: EdgeInsets.all(5),
-                      border: InputBorder.none),
+                    prefixIcon: Icon(
+                      EvaIcons.text_outline,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    contentPadding: EdgeInsets.only(top: 12),
+                    border: InputBorder.none,
+                  ),
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10),
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                ),
+                child: TextFormField(
+                  style: GoogleFonts.jetBrainsMono(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(
+                      BoxIcons.bx_money,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    contentPadding: const EdgeInsets.only(top: 12),
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10),
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                ),
+                child: TextFormField(
+                  style: GoogleFonts.jetBrainsMono(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(
+                      AntDesign.money_collect_outline,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    contentPadding: EdgeInsets.only(top: 12),
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
