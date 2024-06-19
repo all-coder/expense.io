@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 class ExpenseAdd extends StatefulWidget {
   const ExpenseAdd({super.key});
@@ -32,7 +33,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.only(left:15,right: 15,top:8,bottom:4),
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 8, bottom: 4),
         height: 300,
         margin: const EdgeInsets.all(20),
         color: Colors.amber,
@@ -40,9 +41,21 @@ class _ExpenseAddState extends State<ExpenseAdd> {
           key: _formKey,
           child: Column(
             children: [
-             TextFormField(
-              decoration: InputDecoration(),
-             )
+              Container(
+                margin: const EdgeInsets.only(top:10),
+                padding: const EdgeInsets.only(top:5),
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                ),
+                child: TextFormField(
+                  
+                  decoration: const InputDecoration(
+                    
+                    prefixIcon:Icon(EvaIcons.text_outline),
+                      contentPadding: EdgeInsets.all(5),
+                      border: InputBorder.none),
+                ),
+              )
             ],
           ),
         ),
