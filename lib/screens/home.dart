@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proj_13/widgets/expense.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -8,6 +9,16 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor:Colors.white,
+        elevation: 20,
+        onPressed: () {},
+        child: const Icon(
+          BoxIcons.bx_money_withdraw,
+          color:Color(0xffee6c4d),
+          size:30
+        ),
+      ),
       body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
@@ -72,3 +83,6 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+
+//to add a floating action button
