@@ -33,6 +33,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfffffcf2),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70),
         child: AppBar(

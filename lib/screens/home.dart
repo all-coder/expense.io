@@ -10,6 +10,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfffffcf2),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,
         elevation: 20,
@@ -29,7 +30,7 @@ class Home extends StatelessWidget {
               SliverAppBar(
                 backgroundColor: const Color(0xff293241),
                 title: Text(
-                  "LifeSYNC",
+                  "expense.io",
                   style: GoogleFonts.jetBrainsMono(
                     fontSize: 35,
                     fontWeight: FontWeight.w800,
