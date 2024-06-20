@@ -32,6 +32,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
   final descriptionController = TextEditingController();
   final amountController = TextEditingController();
   final dateController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +44,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
             color: Color(0xffee6c4d),
           ),
           title: Text(
-            "LifeSYNC",
+            "expense.io",
             style: GoogleFonts.jetBrainsMono(
               fontSize: 35,
               fontWeight: FontWeight.w800,
@@ -167,33 +168,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                 ),
               ),
               const SizedBox(height: 10),
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                decoration: const BoxDecoration(
-                  color: Colors.red,
-                ),
-                child: DropdownButtonFormField(
-                  items: [
-                    //here we want to use map function to return a list tile with the
-                    //tag and a prefix icon.
-                    ...tagIcons.keys.map((item) {
-                      return DropdownMenuItem(
-                        child: ListTile(
-                          leading: Icon(tagIcons[item]),
-                          title: Text(
-                            item.name,
-                            style: GoogleFonts.jetBrainsMono(
-                              fontSize: 15,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      );
-                    })
-                  ],
-                  onChanged: null,
-                ),
-              ),
+             
             ],
           ),
         ),
