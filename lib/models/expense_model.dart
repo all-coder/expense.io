@@ -3,6 +3,7 @@ import 'package:icons_plus/icons_plus.dart';
 
 enum Tags { food, utility, entertainment, transport, health }
 
+//we are mapping the tags to the icons
 final Map<Tags, dynamic> tagIcons = {
   Tags.food: Icons.dining,
   Tags.utility: Icons.cable_rounded,
@@ -11,6 +12,8 @@ final Map<Tags, dynamic> tagIcons = {
   Tags.health: BoxIcons.bxs_ambulance,
 };
 
+
+//here we are defining the expense model to be used across all files across the app
 class ExpenseModel {
   const ExpenseModel(
       {required this.name,

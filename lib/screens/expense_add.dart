@@ -100,7 +100,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                       color: Colors.white,
                       size: 30,
                     ),
-                    contentPadding: const EdgeInsets.only(top: 12),
+                    contentPadding:EdgeInsets.only(top: 12),
                     border: InputBorder.none,
                   ),
                 ),
@@ -121,6 +121,34 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                   decoration: const InputDecoration(
                     prefixIcon: Icon(
                       AntDesign.money_collect_outline,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    contentPadding: EdgeInsets.only(top: 12),
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10),
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                ),
+                child: TextFormField(
+                  onTap: (){
+                    _getDate();
+                  },
+                  controller: dateController,
+                  style: GoogleFonts.jetBrainsMono(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(
+                        Icons.date_range_outlined,
                       color: Colors.white,
                       size: 30,
                     ),
