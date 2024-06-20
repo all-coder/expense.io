@@ -43,7 +43,7 @@ class ExpenseTile extends StatelessWidget {
             left: leftAlignment,
             top: 35,
             child: Text(
-              "Payed ${expenseObj.reciever} \$${expenseObj.amount}",
+              "\$${expenseObj.amount}",
               style: GoogleFonts.jetBrainsMono(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,

@@ -32,9 +32,10 @@ class _ExpenseAddState extends State<ExpenseAdd> {
   final descriptionController = TextEditingController();
   final amountController = TextEditingController();
   final dateController = TextEditingController();
-  
+
   @override
   Widget build(BuildContext context) {
+    print(tagIcons.keys.toList());
     return Scaffold(
       backgroundColor: const Color(0xfffffcf2),
       appBar: PreferredSize(
@@ -56,7 +57,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
       ),
       body: Container(
         padding: const EdgeInsets.only(left: 15, right: 15, top: 8, bottom: 4),
-        height: 300,
+        height: 900,
         margin: const EdgeInsets.all(20),
         color: Colors.amber,
         child: Form(
@@ -168,7 +169,23 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                 ),
               ),
               const SizedBox(height: 10),
-             
+
+              // Container(
+              //   margin: const EdgeInsets.only(top: 10),
+              //   decoration: const BoxDecoration(
+              //     color: Colors.red,
+              //   ),
+              //   child: DropdownButtonFormField(
+              //     value: tagIcons[Tags.food].name,
+              //     items: [
+              //       for(final i in tagIcons.keys.toList())
+              //         DropdownMenuItem(child: ListTile(title: Text(i.name),),value:i.name,)
+
+              //     ],
+              //     onChanged: (h) {
+              //       print("hello world");
+              //     },
+              //   ),
             ],
           ),
         ),
