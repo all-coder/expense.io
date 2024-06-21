@@ -41,7 +41,7 @@ class ExpenseTile extends StatelessWidget {
           ),
           Positioned(
             left: leftAlignment,
-            top: 35,
+            top: 37,
             child: Text(
               "\$${expenseObj.amount}",
               style: GoogleFonts.jetBrainsMono(
