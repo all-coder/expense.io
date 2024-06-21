@@ -61,23 +61,32 @@ class _ExpenseAddState extends State<ExpenseAdd> {
               color: const Color(0xffee6c4d),
             ),
           ),
-          backgroundColor: const Color(0xff293241),
+          backgroundColor: const Color(0xff262626),
         ),
       ),
       body: Container(
         padding: const EdgeInsets.only(left: 15, right: 15, top: 8, bottom: 4),
-        height: 900,
         margin: const EdgeInsets.all(20),
-        color: Colors.amber,
         child: Form(
           key: _formKey,
           child: Column(
             children: [
+              Text(
+                "New Expense",
+                style: GoogleFonts.jetBrainsMono(
+                  fontSize: 50,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xff262626),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
               //nature of payment
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 decoration: const BoxDecoration(
-                  color: Colors.red,
+                  color: Color(0xff262626),
                 ),
                 child: TextFormField(
                   style: GoogleFonts.jetBrainsMono(
@@ -103,7 +112,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 decoration: const BoxDecoration(
-                  color: Colors.red,
+                  color: Color(0xff262626),
                 ),
                 child: TextFormField(
                   style: GoogleFonts.jetBrainsMono(
@@ -125,37 +134,11 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                 height: 10,
               ),
 
-              //receiver of the payment
-              // Container(
-              //   margin: const EdgeInsets.only(top: 10),
-              //   decoration: const BoxDecoration(
-              //     color: Colors.red,
-              //   ),
-              //   child: TextFormField(
-              //     style: GoogleFonts.jetBrainsMono(
-              //       fontSize: 15,
-              //       color: Colors.white,
-              //     ),
-              //     decoration: const InputDecoration(
-              //       prefixIcon: Icon(
-              //         AntDesign.money_collect_outline,
-              //         color: Colors.white,
-              //         size: 30,
-              //       ),
-              //       contentPadding: EdgeInsets.only(top: 12),
-              //       border: InputBorder.none,
-              //     ),
-              //   ),
-              // ),
-              // const SizedBox(
-              //   height: 10,
-              // ),
-
               //date picker
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 decoration: const BoxDecoration(
-                  color: Colors.red,
+                  color: Color(0xff262626),
                 ),
                 child: TextFormField(
                   onTap: () {
@@ -179,13 +162,13 @@ class _ExpenseAddState extends State<ExpenseAdd> {
               ),
               const SizedBox(height: 10),
 
-              // dropdown with prefix icon
+              //dropdownmenuformfield widget
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 decoration: const BoxDecoration(
-                  color: Colors.red,
+                  color: Color(0xff262626),
                 ),
-                padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Row(
                   children: [
                     Icon(
@@ -199,12 +182,18 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                         value: currentChoiceOfTag,
                         decoration: const InputDecoration(
                           border: InputBorder.none,
-                          contentPadding: EdgeInsets.only(top: 12),
+                          contentPadding: EdgeInsets.only(top: 5),
                         ),
                         items: tagsList.map((item) {
                           return DropdownMenuItem(
                             value: item,
-                            child: Text(item.name),
+                            child: Text(
+                              item.name,
+                              style: GoogleFonts.jetBrainsMono(
+                                fontSize: 15,
+                                color: Colors.white,
+                              ),
+                            ),
                           );
                         }).toList(),
                         onChanged: (item) {
@@ -212,11 +201,53 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                             currentChoiceOfTag = item;
                           });
                         },
+                        dropdownColor: const Color(0xff8C8C8C),
                       ),
                     ),
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 40,
+              ),
+
+              //adding buttons for submission and resetting the form
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Color(0xff1F1F1E),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(),
+                      child: Text(
+                        "Reset",
+                        style: GoogleFonts.jetBrainsMono(
+                          fontSize: 15,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Color(0xff1F1F1E),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Add",
+                        style: GoogleFonts.jetBrainsMono(
+                          fontSize: 15,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
