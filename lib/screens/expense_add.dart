@@ -5,6 +5,7 @@ import '../models/expense_model.dart';
 
 class ExpenseAdd extends StatefulWidget {
   const ExpenseAdd({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _ExpenseAddState();
@@ -34,9 +35,16 @@ class _ExpenseAddState extends State<ExpenseAdd> {
   final dateController = TextEditingController();
   final tagsList = tagIcons.keys.toList();
 
+  var currentChoiceOfTag;
+
+  @override
+  void initState() {
+    super.initState();
+    currentChoiceOfTag = tagsList[0];
+  }
+
   @override
   Widget build(BuildContext context) {
-    var currentChoiceOfTag = tagsList[0];
     return Scaffold(
       backgroundColor: const Color(0xfffffcf2),
       appBar: PreferredSize(
@@ -117,31 +125,31 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                 height: 10,
               ),
 
-              //receiever of the payment
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                decoration: const BoxDecoration(
-                  color: Colors.red,
-                ),
-                child: TextFormField(
-                  style: GoogleFonts.jetBrainsMono(
-                    fontSize: 15,
-                    color: Colors.white,
-                  ),
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(
-                      AntDesign.money_collect_outline,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    contentPadding: EdgeInsets.only(top: 12),
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
+              //receiver of the payment
+              // Container(
+              //   margin: const EdgeInsets.only(top: 10),
+              //   decoration: const BoxDecoration(
+              //     color: Colors.red,
+              //   ),
+              //   child: TextFormField(
+              //     style: GoogleFonts.jetBrainsMono(
+              //       fontSize: 15,
+              //       color: Colors.white,
+              //     ),
+              //     decoration: const InputDecoration(
+              //       prefixIcon: Icon(
+              //         AntDesign.money_collect_outline,
+              //         color: Colors.white,
+              //         size: 30,
+              //       ),
+              //       contentPadding: EdgeInsets.only(top: 12),
+              //       border: InputBorder.none,
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 10,
+              // ),
 
               //date picker
               Container(
@@ -170,33 +178,43 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                 ),
               ),
               const SizedBox(height: 10),
+
+              // dropdown with prefix icon
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 decoration: const BoxDecoration(
                   color: Colors.red,
                 ),
-                child: DropdownButtonFormField(
-                  value: currentChoiceOfTag,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
+                padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                child: Row(
+                  children: [
+                    Icon(
                       tagIcons[currentChoiceOfTag],
                       color: Colors.white,
                       size: 30,
                     ),
-                  ),
-                  items: [
-                    ...tagsList.map((item) {
-                      return DropdownMenuItem(
-                        value: item,
-                        child: Text(item.name),
-                      );
-                    })
+                    const SizedBox(width: 15),
+                    Expanded(
+                      child: DropdownButtonFormField(
+                        value: currentChoiceOfTag,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.only(top: 12),
+                        ),
+                        items: tagsList.map((item) {
+                          return DropdownMenuItem(
+                            value: item,
+                            child: Text(item.name),
+                          );
+                        }).toList(),
+                        onChanged: (item) {
+                          setState(() {
+                            currentChoiceOfTag = item;
+                          });
+                        },
+                      ),
+                    ),
                   ],
-                  onChanged: (item) {
-                    setState(() {
-                      currentChoiceOfTag = item!;
-                    });
-                  },
                 ),
               ),
             ],
