@@ -32,10 +32,11 @@ class _ExpenseAddState extends State<ExpenseAdd> {
   final descriptionController = TextEditingController();
   final amountController = TextEditingController();
   final dateController = TextEditingController();
+  final tagsList = tagIcons.keys.toList();
 
   @override
   Widget build(BuildContext context) {
-    print(tagIcons.keys.toList());
+    var currentChoiceOfTag = tagsList[0];
     return Scaffold(
       backgroundColor: const Color(0xfffffcf2),
       appBar: PreferredSize(
@@ -169,23 +170,35 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                 ),
               ),
               const SizedBox(height: 10),
-
-              // Container(
-              //   margin: const EdgeInsets.only(top: 10),
-              //   decoration: const BoxDecoration(
-              //     color: Colors.red,
-              //   ),
-              //   child: DropdownButtonFormField(
-              //     value: tagIcons[Tags.food].name,
-              //     items: [
-              //       for(final i in tagIcons.keys.toList())
-              //         DropdownMenuItem(child: ListTile(title: Text(i.name),),value:i.name,)
-
-              //     ],
-              //     onChanged: (h) {
-              //       print("hello world");
-              //     },
-              //   ),
+              Container(
+                margin: const EdgeInsets.only(top: 10),
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                ),
+                child: DropdownButtonFormField(
+                  value: currentChoiceOfTag,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      tagIcons[currentChoiceOfTag],
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                  items: [
+                    ...tagsList.map((item) {
+                      return DropdownMenuItem(
+                        value: item,
+                        child: Text(item.name),
+                      );
+                    })
+                  ],
+                  onChanged: (item) {
+                    setState(() {
+                      currentChoiceOfTag = item!;
+                    });
+                  },
+                ),
+              ),
             ],
           ),
         ),

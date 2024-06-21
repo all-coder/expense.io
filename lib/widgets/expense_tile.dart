@@ -23,7 +23,7 @@ class ExpenseTile extends StatelessWidget {
             top: 15,
             child: Icon(
               tagIcons[expenseObj.tag],
-              size:30,
+              size: 30,
               color: Colors.white,
             ),
           ),
@@ -52,16 +52,17 @@ class ExpenseTile extends StatelessWidget {
             ),
           ),
           Positioned(
-              left: (MediaQuery.of(context).size.width).toDouble() - 85,
-              top: 4,
-              child: IconButton(
-                iconSize: 40,
-                icon: const Icon(
-                  Icons.delete_outline_rounded,
-                  color: Color(0xffef233c),
-                ),
-                onPressed: () {},
-              ))
+            left: (MediaQuery.of(context).size.width).toDouble() - 85,
+            top: 4,
+            child: IconButton(
+              iconSize: 40,
+              icon: const Icon(
+                Icons.delete_outline_rounded,
+                color: Color(0xffef233c),
+              ),
+              onPressed: () {},
+            ),
+          ),
         ],
       ),
     );
