@@ -60,7 +60,8 @@ class _ExpenseState extends State<Expense> {
                         ),
                         Container(
                           padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
-                          decoration: const BoxDecoration(color: Color(0xff80b918)),
+                          decoration:
+                              const BoxDecoration(color: Color(0xff55a630)),
                           child: Text(
                             "\$${spending[index].toString()}",
                             style: GoogleFonts.jetBrainsMono(
@@ -69,10 +70,11 @@ class _ExpenseState extends State<Expense> {
                             ),
                           ),
                         ),
-                        
                       ],
                     ),
-                    const SizedBox(height: 10,),
+                    const SizedBox(
+                      height: 10,
+                    ),
 
                     ...obj[text[index]]!.map(
                       (item) {
