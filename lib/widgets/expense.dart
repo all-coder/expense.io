@@ -12,17 +12,28 @@ class Expense extends StatefulWidget {
   }
 }
 
-final text = ["Yesterday", "Today"];
-
-final Map<String, List<ExpenseModel>> obj = {
-  "Yesterday": yesterdayDummyList,
-  "Today": todayDummyList
-};
-
 class _ExpenseState extends State<Expense> {
+  final text = ["Yesterday", "Today"];
+  final Map<String, List<ExpenseModel>> obj = {
+    "Yesterday": yesterdayDummyList,
+    "Today": todayDummyList
+  };
+  int getTotalSpending(List<ExpenseModel> list) {
+    var totalSum = 0;
+    for (int i = 0; i < list.length; i++) {
+      totalSum = totalSum + int.parse(list[i].amount);
+    }
+    return totalSum;
+  }
+
   final pageController = PageController(initialPage: 1);
   @override
   Widget build(BuildContext context) {
+    final List<int> spending = [
+      getTotalSpending(yesterdayDummyList),
+      getTotalSpending(todayDummyList)
+    ];
+
     return PageView.builder(
       controller: pageController,
       scrollDirection: Axis.horizontal,
@@ -37,14 +48,31 @@ class _ExpenseState extends State<Expense> {
                     const SizedBox(
                       height: 15,
                     ),
-                    Text(
-                      text[index],
-                      style: GoogleFonts.jetBrainsMono(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w900,
-                      ),
-                      textAlign: TextAlign.center,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          text[index],
+                          style: GoogleFonts.jetBrainsMono(
+                            fontSize: 35,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+                          decoration: const BoxDecoration(color: Color(0xff80b918)),
+                          child: Text(
+                            "\$${spending[index].toString()}",
+                            style: GoogleFonts.jetBrainsMono(
+                              fontSize: 35,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                        ),
+                        
+                      ],
                     ),
+                    const SizedBox(height: 10,),
 
                     ...obj[text[index]]!.map(
                       (item) {
@@ -54,9 +82,11 @@ class _ExpenseState extends State<Expense> {
                   ],
                 )
               : Column(
-                children: [
-                  const SizedBox(height: 20,),
-                  Text(
+                  children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
                       text[index],
                       style: GoogleFonts.jetBrainsMono(
                         fontSize: 35,
@@ -64,7 +94,7 @@ class _ExpenseState extends State<Expense> {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                  Container(
+                    Container(
                       height: 300,
                       width: 300,
                       margin: const EdgeInsets.only(top: 50),
@@ -72,8 +102,8 @@ class _ExpenseState extends State<Expense> {
                         "lib/assets/images/nothing_here.png",
                       ),
                     ),
-                ],
-              ),
+                  ],
+                ),
         );
       },
     );

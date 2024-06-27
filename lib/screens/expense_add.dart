@@ -217,16 +217,31 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                 children: [
                   Container(
                     decoration: const BoxDecoration(
-                      color: Color(0xff1F1F1E),
+                      border: Border(
+                        left: BorderSide(
+                          color: Color(0xff1F1F1E),
+                        ),
+                        right: BorderSide(
+                          color: Color(0xff1F1F1E),
+                        ),
+                        top: BorderSide(
+                          color: Color(0xff1F1F1E),
+                        ),
+                        bottom: BorderSide(
+                          color: Color(0xff1F1F1E),
+                        ),
+                      ),
+                      color: Colors.white,
                     ),
-                    child: TextButton(
+                    child:TextButton(
+                      
                       onPressed: () {},
                       style: TextButton.styleFrom(),
                       child: Text(
                         "Reset",
                         style: GoogleFonts.jetBrainsMono(
                           fontSize: 15,
-                          color: Colors.white,
+                          color: const Color(0xff1F1F1E),
                         ),
                       ),
                     ),
