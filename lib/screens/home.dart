@@ -12,7 +12,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xfffffcf2),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white,
+        backgroundColor:const  Color(0xff1F1F1E),
         elevation: 20,
         onPressed: () {
           Navigator.of(context).push(
