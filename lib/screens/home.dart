@@ -46,6 +46,11 @@ class _HomeState extends State<Home> {
       ),
     );
 
+    void getExpenseObjectArray(){
+      
+    }
+    
+
     //decoding the response data
     final Map<String, dynamic> responseData = json.decode(response.body);
     print(responseData); //printing it for debugging purposes
