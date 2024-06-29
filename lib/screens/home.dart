@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final remainingBudget = totalBudget - getTotalSpending(todayDummyList);
+    final remainingBudget = totalBudget - getTotalSpending([...todayDummyList,...yesterdayDummyList]);
     return Scaffold(
       backgroundColor: const Color(0xfffffcf2),
       floatingActionButton: FloatingActionButton(
