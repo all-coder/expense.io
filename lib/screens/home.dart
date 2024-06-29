@@ -1,25 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:proj_13/models/dummydata.dart';
 import 'package:proj_13/widgets/expense.dart';
 import 'package:icons_plus/icons_plus.dart';
 import '../screens/expense_add.dart';
+import '../models/expense_model.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xfffffcf2),
       floatingActionButton: FloatingActionButton(
-        backgroundColor:const  Color(0xff1F1F1E),
+        backgroundColor: const Color(0xff1F1F1E),
         elevation: 20,
-        onPressed: () {
-          Navigator.of(context).push(
+        onPressed: () async {
+          final ExpenseModel receivedExpense = await Navigator.of(context).push(
             MaterialPageRoute(
               builder: (ctx) => const ExpenseAdd(),
             ),
           );
+
+          setState(() {
+            todayDummyList.add(receivedExpense);
+          });
         },
         child: const Icon(BoxIcons.bx_money_withdraw,
             color: Color(0xffee6c4d), size: 30),
@@ -84,7 +95,10 @@ class Home extends StatelessWidget {
               ),
             ];
           },
-          body: const Expense()),
+          body: Expense(
+            todayList: todayDummyList,
+            yesterdayList: yesterdayDummyList,
+          )),
     );
   }
 }

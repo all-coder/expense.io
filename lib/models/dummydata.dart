@@ -1,5 +1,7 @@
 import 'expense_model.dart';
 
+
+//list of dummy data
 final List<ExpenseModel> todayDummyList = [
   ExpenseModel(
     name: "Transport", 

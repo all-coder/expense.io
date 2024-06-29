@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:proj_13/models/dummydata.dart';
 import '../models/expense_model.dart';
 
 class ExpenseAdd extends StatefulWidget {
@@ -13,6 +14,15 @@ class ExpenseAdd extends StatefulWidget {
 }
 
 class _ExpenseAddState extends State<ExpenseAdd> {
+  //text-editing controllers and other required variables
+  final _formKey = GlobalKey<FormState>();
+  final descriptionController = TextEditingController();
+  final amountController = TextEditingController();
+  final dateController = TextEditingController();
+  final tagsList = tagIcons.keys.toList();
+  late DateTime expenseDate;
+  late Tags currentChoiceOfTag;
+
   Future<void> _getDate() async {
     DateTime? _pickedDate = await showDatePicker(
       //tells flutter the DateTime can either hold datetime or null value, that is
@@ -25,17 +35,22 @@ class _ExpenseAddState extends State<ExpenseAdd> {
     if (_pickedDate != null) {
       setState(() {
         dateController.text = _pickedDate.toString().split(" ")[0];
+        expenseDate = _pickedDate;
       });
     }
   }
 
-  final _formKey = GlobalKey<FormState>();
-  final descriptionController = TextEditingController();
-  final amountController = TextEditingController();
-  final dateController = TextEditingController();
-  final tagsList = tagIcons.keys.toList();
+  void passBackNewExpense(
+    String description,
+    String amount,
+    DateTime date,
+    Tags tag,
+  ) {
+    final ExpenseModel expenseObject =
+        ExpenseModel(name: description, amount: amount, date: date, tag: tag);
 
-  var currentChoiceOfTag;
+    Navigator.of(context).pop(expenseObject);
+  }
 
   @override
   void initState() {
@@ -198,7 +213,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                         }).toList(),
                         onChanged: (item) {
                           setState(() {
-                            currentChoiceOfTag = item;
+                            currentChoiceOfTag = item!;
                           });
                         },
                         dropdownColor: const Color(0xff8C8C8C),
@@ -233,8 +248,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                       ),
                       color: Colors.white,
                     ),
-                    child:TextButton(
-                      
+                    child: TextButton(
                       onPressed: () {},
                       style: TextButton.styleFrom(),
                       child: Text(
@@ -251,7 +265,13 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                       color: Color(0xff1F1F1E),
                     ),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        passBackNewExpense(
+                            descriptionController.text,
+                            amountController.text,
+                            expenseDate,
+                            currentChoiceOfTag);
+                      },
                       child: Text(
                         "Add",
                         style: GoogleFonts.jetBrainsMono(

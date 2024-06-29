@@ -5,7 +5,10 @@ import '../models/dummydata.dart';
 import '../widgets/expense_tile.dart';
 
 class Expense extends StatefulWidget {
-  const Expense({super.key});
+  const Expense(
+      {super.key, required this.todayList, required this.yesterdayList});
+  final List<ExpenseModel> todayList;
+  final List<ExpenseModel> yesterdayList;
   @override
   State<StatefulWidget> createState() {
     return _ExpenseState();
@@ -13,22 +16,24 @@ class Expense extends StatefulWidget {
 }
 
 class _ExpenseState extends State<Expense> {
-  final text = ["Yesterday", "Today"];
-  final Map<String, List<ExpenseModel>> obj = {
-    "Yesterday": yesterdayDummyList,
-    "Today": todayDummyList
-  };
+  
   int getTotalSpending(List<ExpenseModel> list) {
     var totalSum = 0;
+    //to get the total sum 
     for (int i = 0; i < list.length; i++) {
       totalSum = totalSum + int.parse(list[i].amount);
     }
     return totalSum;
   }
 
-  final pageController = PageController(initialPage: 1);
   @override
   Widget build(BuildContext context) {
+    final pageController = PageController(initialPage: 1);
+    final text = ["Yesterday", "Today"];
+    final Map<String, List<ExpenseModel>> obj = {
+      "Yesterday": widget.yesterdayList,
+      "Today": widget.todayList
+    };
     final List<int> spending = [
       getTotalSpending(yesterdayDummyList),
       getTotalSpending(todayDummyList)

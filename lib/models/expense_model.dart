@@ -12,7 +12,6 @@ final Map<Tags, dynamic> tagIcons = {
   Tags.health: BoxIcons.bxs_ambulance,
 };
 
-
 //here we are defining the expense model to be used across all files across the app
 class ExpenseModel {
   const ExpenseModel(
