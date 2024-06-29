@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:proj_13/models/dummydata.dart';
 import '../models/expense_model.dart';
 
 class ExpenseAdd extends StatefulWidget {
@@ -39,7 +38,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
       });
     }
   }
-
+// passing back the expense object to expense.dart screen
   void passBackNewExpense(
     String description,
     String amount,
@@ -104,6 +103,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                   color: Color(0xff262626),
                 ),
                 child: TextFormField(
+                  controller: descriptionController,
                   style: GoogleFonts.jetBrainsMono(
                     fontSize: 15,
                     color: Colors.white,
@@ -119,6 +119,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                   ),
                 ),
               ),
+
               const SizedBox(
                 height: 10,
               ),
@@ -130,6 +131,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                   color: Color(0xff262626),
                 ),
                 child: TextFormField(
+                  controller: amountController,
                   style: GoogleFonts.jetBrainsMono(
                     fontSize: 15,
                     color: Colors.white,
