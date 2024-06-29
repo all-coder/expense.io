@@ -12,11 +12,13 @@ class Expense extends StatefulWidget {
     required this.yesterdayList,
     required this.deleteExpenseObject,
     required this.getTotalSpending,
+
   });
   final List<ExpenseModel> todayList;
   final List<ExpenseModel> yesterdayList;
   final Function deleteExpenseObject;
   final Function getTotalSpending;
+
   @override
   State<StatefulWidget> createState() {
     return _ExpenseState();
@@ -26,12 +28,16 @@ class Expense extends StatefulWidget {
 class _ExpenseState extends State<Expense> {
   @override
   Widget build(BuildContext context) {
+    //this page controller is necessary as we are integrating a PageView widget
     final pageController = PageController(initialPage: 1);
+
     final text = ["Yesterday", "Today"];
     final Map<String, List<ExpenseModel>> expenseMap = {
       "Yesterday": widget.yesterdayList,
       "Today": widget.todayList
     };
+
+    //gets the total spending through getTotalSpending()(exists in home.dart file)
     final List<int> spendingList = [
       widget.getTotalSpending(yesterdayDummyList),
       widget.getTotalSpending(todayDummyList)
@@ -80,14 +86,18 @@ class _ExpenseState extends State<Expense> {
                     ...expenseMap[text[index]]!.map(
                       (item) {
                         return ExpenseTile(
-                            expenseObj: item,
-                            deleteExpenseObject: widget.deleteExpenseObject,
-                            expenseArray: expenseMap[text[index]]!);
+                          expenseObj: item,
+                          deleteExpenseObject: widget.deleteExpenseObject,
+                          expenseArray: expenseMap[text[index]]!,
+               
+                        );
                       },
                     ),
                   ],
                 )
-              : Column(
+              : //we display this widget(contains only an image) that is conditionally rendered when there are no transactions in the 
+              //particular pageview.
+              Column(    
                   children: [
                     const SizedBox(
                       height: 20,
