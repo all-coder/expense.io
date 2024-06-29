@@ -7,7 +7,7 @@ import '../screens/expense_add.dart';
 import '../models/expense_model.dart';
 
 //for example's sake
-const double totalBudget = 10000;
+const int totalBudget = 100000;
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -18,7 +18,6 @@ class Home extends StatefulWidget {
 //tis confusing, i know, but i am trying to manage state from home.dart file and through expense.dart file
 
 class _HomeState extends State<Home> {
-  
   int getTotalSpending(List<ExpenseModel> list) {
     var totalSum = 0;
     //to get the total sum
@@ -44,6 +43,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final remainingBudget = totalBudget - getTotalSpending(todayDummyList);
     return Scaffold(
       backgroundColor: const Color(0xfffffcf2),
       floatingActionButton: FloatingActionButton(
@@ -103,7 +103,7 @@ class _HomeState extends State<Home> {
                       top: 190,
                       left: 30,
                       child: Text(
-                        "\$500",
+                        "\$$remainingBudget",
                         style: GoogleFonts.jetBrainsMono(
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
