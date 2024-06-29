@@ -14,11 +14,14 @@ final Map<Tags, dynamic> tagIcons = {
 
 //here we are defining the expense model to be used across all files across the app
 class ExpenseModel {
-  const ExpenseModel(
-      {required this.name,
-      required this.amount,
-      required this.date,
-      required this.tag});
+  const ExpenseModel({
+    required this.id,
+    required this.name,
+    required this.amount,
+    required this.date,
+    required this.tag,
+  });
+  final String id;
   final String name;
   final String amount;
   final DateTime date;

@@ -5,10 +5,15 @@ import '../models/dummydata.dart';
 import '../widgets/expense_tile.dart';
 
 class Expense extends StatefulWidget {
+  //when the input to the Expense constructor changes, the widget automatically re-renders.
   const Expense(
-      {super.key, required this.todayList, required this.yesterdayList});
+      {super.key,
+      required this.todayList,
+      required this.yesterdayList,
+      required this.deleteExpenseObject});
   final List<ExpenseModel> todayList;
   final List<ExpenseModel> yesterdayList;
+  final Function deleteExpenseObject;
   @override
   State<StatefulWidget> createState() {
     return _ExpenseState();
@@ -16,10 +21,9 @@ class Expense extends StatefulWidget {
 }
 
 class _ExpenseState extends State<Expense> {
-  
   int getTotalSpending(List<ExpenseModel> list) {
     var totalSum = 0;
-    //to get the total sum 
+    //to get the total sum
     for (int i = 0; i < list.length; i++) {
       totalSum = totalSum + int.parse(list[i].amount);
     }
@@ -30,11 +34,11 @@ class _ExpenseState extends State<Expense> {
   Widget build(BuildContext context) {
     final pageController = PageController(initialPage: 1);
     final text = ["Yesterday", "Today"];
-    final Map<String, List<ExpenseModel>> obj = {
+    final Map<String, List<ExpenseModel>> expenseMap = {
       "Yesterday": widget.yesterdayList,
       "Today": widget.todayList
     };
-    final List<int> spending = [
+    final List<int> spendingList = [
       getTotalSpending(yesterdayDummyList),
       getTotalSpending(todayDummyList)
     ];
@@ -42,14 +46,13 @@ class _ExpenseState extends State<Expense> {
     return PageView.builder(
       controller: pageController,
       scrollDirection: Axis.horizontal,
-      itemCount: obj.length,
+      itemCount: expenseMap.length,
       itemBuilder: (context, index) {
-        var length = obj[text[index]]!.length;
+        var length = expenseMap[text[index]]!.length;
         return SingleChildScrollView(
           child: length != 0
               ? Column(
                   children: [
-                    //for giving space between the sliver space bar and content following it.
                     const SizedBox(
                       height: 15,
                     ),
@@ -68,7 +71,7 @@ class _ExpenseState extends State<Expense> {
                           decoration:
                               const BoxDecoration(color: Color(0xff55a630)),
                           child: Text(
-                            "\$${spending[index].toString()}",
+                            "\$${spendingList[index].toString()}",
                             style: GoogleFonts.jetBrainsMono(
                               fontSize: 35,
                               fontWeight: FontWeight.w900,
@@ -80,10 +83,12 @@ class _ExpenseState extends State<Expense> {
                     const SizedBox(
                       height: 10,
                     ),
-
-                    ...obj[text[index]]!.map(
+                    ...expenseMap[text[index]]!.map(
                       (item) {
-                        return ExpenseTile(expenseObj: item);
+                        return ExpenseTile(
+                            expenseObj: item,
+                            deleteExpenseObject: widget.deleteExpenseObject,
+                            expenseArray: expenseMap[text[index]]!);
                       },
                     ),
                   ],

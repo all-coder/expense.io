@@ -12,8 +12,23 @@ class Home extends StatefulWidget {
   @override
   State<Home> createState() => _HomeState();
 }
+//tis confusing, i know, but i am trying to manage state from home.dart file and through expense.dart file
 
 class _HomeState extends State<Home> {
+  //deleting expense object
+  void deleteExpenseObject(String id, List<ExpenseModel> expenseArray) {
+    var expenseObject;
+    for (int i = 0; i < expenseArray.length; i++) {
+      if (expenseArray[i].id == id) {
+        expenseObject = expenseArray[i];
+        break;
+      }
+    }
+    setState(() {
+      expenseArray.remove(expenseObject);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,6 +113,7 @@ class _HomeState extends State<Home> {
           body: Expense(
             todayList: todayDummyList,
             yesterdayList: yesterdayDummyList,
+            deleteExpenseObject: deleteExpenseObject,
           )),
     );
   }

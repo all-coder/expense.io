@@ -3,8 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/expense_model.dart';
 
 class ExpenseTile extends StatelessWidget {
-  const ExpenseTile({super.key, required this.expenseObj});
+  const ExpenseTile(
+      {super.key,
+      required this.expenseObj,
+      required this.deleteExpenseObject,
+      required this.expenseArray});
   final ExpenseModel expenseObj;
+  final Function deleteExpenseObject;
+  final List<ExpenseModel> expenseArray;
 
   @override
   Widget build(BuildContext context) {
@@ -55,13 +61,14 @@ class ExpenseTile extends StatelessWidget {
             left: (MediaQuery.of(context).size.width).toDouble() - 85,
             top: 4,
             child: IconButton(
-              iconSize: 40,
-              icon: const Icon(
-                Icons.delete_outline_rounded,
-                color: Color(0xffef233c),
-              ),
-              onPressed: () {},
-            ),
+                iconSize: 40,
+                icon: const Icon(
+                  Icons.delete_outline_rounded,
+                  color: Color(0xffef233c),
+                ),
+                onPressed: () {
+                  deleteExpenseObject(expenseObj.id,expenseArray);
+                }),
           ),
         ],
       ),

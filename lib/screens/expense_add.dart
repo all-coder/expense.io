@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icons_plus/icons_plus.dart';
 import '../models/expense_model.dart';
+import "package:uuid/uuid.dart";
+
+const uuid = Uuid();
 
 class ExpenseAdd extends StatefulWidget {
   const ExpenseAdd({super.key});
@@ -38,6 +41,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
       });
     }
   }
+
 // passing back the expense object to expense.dart screen
   void passBackNewExpense(
     String description,
@@ -45,8 +49,8 @@ class _ExpenseAddState extends State<ExpenseAdd> {
     DateTime date,
     Tags tag,
   ) {
-    final ExpenseModel expenseObject =
-        ExpenseModel(name: description, amount: amount, date: date, tag: tag);
+    final ExpenseModel expenseObject = ExpenseModel(
+        id: uuid.v1(), name: description, amount: amount, date: date, tag: tag);
 
     Navigator.of(context).pop(expenseObject);
   }
