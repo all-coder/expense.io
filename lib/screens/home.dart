@@ -6,6 +6,9 @@ import 'package:icons_plus/icons_plus.dart';
 import '../screens/expense_add.dart';
 import '../models/expense_model.dart';
 
+//for example's sake
+const double totalBudget = 10000;
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -15,6 +18,16 @@ class Home extends StatefulWidget {
 //tis confusing, i know, but i am trying to manage state from home.dart file and through expense.dart file
 
 class _HomeState extends State<Home> {
+  
+  int getTotalSpending(List<ExpenseModel> list) {
+    var totalSum = 0;
+    //to get the total sum
+    for (int i = 0; i < list.length; i++) {
+      totalSum = totalSum + int.parse(list[i].amount);
+    }
+    return totalSum;
+  }
+
   //deleting expense object
   void deleteExpenseObject(String id, List<ExpenseModel> expenseArray) {
     var expenseObject;
@@ -114,6 +127,7 @@ class _HomeState extends State<Home> {
             todayList: todayDummyList,
             yesterdayList: yesterdayDummyList,
             deleteExpenseObject: deleteExpenseObject,
+            getTotalSpending: getTotalSpending,
           )),
     );
   }
