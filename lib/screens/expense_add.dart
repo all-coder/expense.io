@@ -7,7 +7,11 @@ import "package:uuid/uuid.dart";
 const uuid = Uuid();
 
 class ExpenseAdd extends StatefulWidget {
-  const ExpenseAdd({super.key});
+  const ExpenseAdd({
+    super.key,
+    required this.uploadExpenseObject,
+  });
+  final Function uploadExpenseObject;
 
   @override
   State<StatefulWidget> createState() {
@@ -44,13 +48,14 @@ class _ExpenseAddState extends State<ExpenseAdd> {
 
 // passing back the expense object to expense.dart screen
   void passBackNewExpense(
+    String id,
     String description,
     String amount,
     DateTime date,
     Tags tag,
   ) {
     final ExpenseModel expenseObject = ExpenseModel(
-        id: uuid.v1(), name: description, amount: amount, date: date, tag: tag);
+        id: id, name: description, amount: amount, date: date, tag: tag);
 
     Navigator.of(context).pop(expenseObject);
   }
@@ -272,11 +277,21 @@ class _ExpenseAddState extends State<ExpenseAdd> {
                     ),
                     child: TextButton(
                       onPressed: () {
+                        final String newId = uuid.v1();
                         passBackNewExpense(
+                            newId,
                             descriptionController.text,
                             amountController.text,
                             expenseDate,
                             currentChoiceOfTag);
+                        widget.uploadExpenseObject(
+                          ExpenseModel(
+                              id: newId,
+                              name: descriptionController.text,
+                              amount: amountController.text,
+                              date: expenseDate,
+                              tag: currentChoiceOfTag),
+                        );
                       },
                       child: Text(
                         "Add",
