@@ -6,14 +6,17 @@ import '../widgets/expense_tile.dart';
 
 class Expense extends StatefulWidget {
   //when the input to the Expense constructor changes, the widget automatically re-renders.
-  const Expense(
-      {super.key,
-      required this.todayList,
-      required this.yesterdayList,
-      required this.deleteExpenseObject});
+  const Expense({
+    super.key,
+    required this.todayList,
+    required this.yesterdayList,
+    required this.deleteExpenseObject,
+    required this.getTotalSpending,
+  });
   final List<ExpenseModel> todayList;
   final List<ExpenseModel> yesterdayList;
   final Function deleteExpenseObject;
+  final Function getTotalSpending;
   @override
   State<StatefulWidget> createState() {
     return _ExpenseState();
@@ -21,15 +24,6 @@ class Expense extends StatefulWidget {
 }
 
 class _ExpenseState extends State<Expense> {
-  int getTotalSpending(List<ExpenseModel> list) {
-    var totalSum = 0;
-    //to get the total sum
-    for (int i = 0; i < list.length; i++) {
-      totalSum = totalSum + int.parse(list[i].amount);
-    }
-    return totalSum;
-  }
-
   @override
   Widget build(BuildContext context) {
     final pageController = PageController(initialPage: 1);
@@ -39,8 +33,8 @@ class _ExpenseState extends State<Expense> {
       "Today": widget.todayList
     };
     final List<int> spendingList = [
-      getTotalSpending(yesterdayDummyList),
-      getTotalSpending(todayDummyList)
+      widget.getTotalSpending(yesterdayDummyList),
+      widget.getTotalSpending(todayDummyList)
     ];
 
     return PageView.builder(
