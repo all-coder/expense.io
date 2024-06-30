@@ -4,6 +4,11 @@ import './screens/home.dart';
 
 //############################expense.io##################################
 
+
+//TO-DO//
+//need to update few functions
+//need to streamline a few processes.
+
 Future<void> main() async {
   await dotenv.load();
   runApp(const MyApp());
