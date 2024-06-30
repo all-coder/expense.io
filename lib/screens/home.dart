@@ -17,11 +17,13 @@ const int totalBudget = 100000;
 
 //loading the url address and setting it up through Uri().
 final String address = dotenv.env["DATABASE_URL"] ?? "ADDRESS NOT FOUND";
+
+//routes to dump data
 const String todayAddress = "users/zero/today.json";
 const String yesterdayAddress = "users/zero/yesterday.json";
-// final Uri url = Uri.https(address, "users/zero.json");
 
-//main
+
+//main widget
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -40,7 +42,7 @@ class _HomeState extends State<Home> {
   }
 
   Future<List<dynamic>> getExpenseObjectArray() async {
-    final String directory = todayAddress;
+    const  String directory = todayAddress;
     final Uri getURL = getCurrentURL(directory);
     final List<dynamic> expenseArray = [];
     final response = await http.get(getURL);
@@ -54,7 +56,7 @@ class _HomeState extends State<Home> {
 
   Future<int> uploadExpenseObject(
       ExpenseModel expenseObject) async {
-        final String directory = todayAddress;
+        const String directory = todayAddress;
     final Uri postURL = getCurrentURL(directory);
     final response = await http.post(
       postURL,
