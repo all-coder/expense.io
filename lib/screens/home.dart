@@ -17,7 +17,9 @@ const int totalBudget = 100000;
 
 //loading the url address and setting it up through Uri().
 final String address = dotenv.env["DATABASE_URL"] ?? "ADDRESS NOT FOUND";
-final Uri url = Uri.https(address, "user_zero/today.json");
+const String todayAddress = "users/zero/today.json";
+const String yesterdayAddress = "users/zero/yesterday.json";
+// final Uri url = Uri.https(address, "users/zero.json");
 
 //main
 class Home extends StatefulWidget {
@@ -27,13 +29,35 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
-  //managaing the overall state of the app through the Home widget(parent widget).
+//managaing the overall state of the app through the Home widget(parent widget).
+//uploading the expense object to the firebase realtime database.
 
-  //uploading the expense object to the firebase realtime database.
-  void uploadExpenseObject(ExpenseModel expenseObject) async {
+class _HomeState extends State<Home> {
+  //the expenseArray is only retrieved once whenever the app is loaded freshly for the first time
+  Uri getCurrentURL(String directory) {
+    final Uri postURL = Uri.https(address, directory);
+    return postURL;
+  }
+
+  Future<List<dynamic>> getExpenseObjectArray() async {
+    final String directory = todayAddress;
+    final Uri getURL = getCurrentURL(directory);
+    final List<dynamic> expenseArray = [];
+    final response = await http.get(getURL);
+    final Map<String, dynamic> responseData = json.decode(response.body);
+    for (final item in responseData.values) {
+      expenseArray.add(item);
+    }
+
+    return expenseArray;
+  }
+
+  Future<int> uploadExpenseObject(
+      ExpenseModel expenseObject) async {
+        final String directory = todayAddress;
+    final Uri postURL = getCurrentURL(directory);
     final response = await http.post(
-      url,
+      postURL,
       headers: {"Content-title": "application/json"},
       body: json.encode(
         {
@@ -46,14 +70,11 @@ class _HomeState extends State<Home> {
       ),
     );
 
-    void getExpenseObjectArray(){
-      
+    if (response.statusCode == 200) {
+      return 200; //successful request
+    } else {
+      return -1; //post request failed
     }
-    
-
-    //decoding the response data
-    final Map<String, dynamic> responseData = json.decode(response.body);
-    print(responseData); //printing it for debugging purposes
   }
 
   //getting the total spending dynamically from the available list of expense object
@@ -180,3 +201,8 @@ class _HomeState extends State<Home> {
 }
 
 //to add a floating action button
+
+
+
+//unused functions//
+
