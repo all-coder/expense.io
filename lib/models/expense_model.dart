@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 
-enum Tags { food, utility, entertainment, transport, health }
+enum Tags { food, utility, entertainment, transport, health,provisions }
 
 //we are mapping the tags to the icons
 final Map<Tags, dynamic> tagIcons = {
@@ -10,6 +10,7 @@ final Map<Tags, dynamic> tagIcons = {
   Tags.transport: BoxIcons.bx_car,
   Tags.entertainment: BoxIcons.bx_movie,
   Tags.health: BoxIcons.bxs_ambulance,
+  Tags.provisions:Icons.takeout_dining_outlined
 };
 
 //here we are defining the expense model to be used across all files across the app
