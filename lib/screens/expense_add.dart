@@ -84,7 +84,7 @@ class _ExpenseAddState extends State<ExpenseAdd> {
               color: const Color(0xffee6c4d),
             ),
           ),
-          backgroundColor: const Color(0xff262626),
+          backgroundColor: const Color(0xff293241),
         ),
       ),
       body: Container(
